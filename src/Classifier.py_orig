@@ -36,12 +36,10 @@ class Net(nn.Module):
         # FC block containing dropout (to be removed for embedding)
         self.linear_block = nn.Sequential(
             nn.Dropout(SOFTMAX_DROPOUT_PROB),
-            #nn.Linear(64, 77),
-            nn.Linear(64, 512),
+            nn.Linear(64, 77),
             nn.ReLU(),
             nn.Dropout(SOFTMAX_DROPOUT_PROB),
-            #nn.Linear(77, NUM_CLASSES)
-            nn.Linear(512, NUM_CLASSES)
+            nn.Linear(77, NUM_CLASSES)
         )
 
     def forward(self, x):

@@ -1,18 +1,18 @@
 USE_GPU = True
 #USE_GPU = False
 #jIMAGE_SIZE = 24
-IMAGE_SIZE = 64
-DATASET = "/dcos/volume0/data/MSTAR/MSTAR_7_orig_size_noncropped"
-TRAIN_DATASET = "/dcos/volume0/data/MSTAR/MSTAR_7_orig_size_noncropped/train"
-TEST_DATASET = "/dcos/volume0/data/MSTAR/MSTAR_7_orig_size_noncropped/test"
+IMAGE_SIZE = 24
+DATASET = "/dcos/volume0/data/MSTAR/MSTAR_7_cropped_copy"
+TRAIN_DATASET = "/dcos/volume0/data/MSTAR/MSTAR_7_cropped_copy/train"
+TEST_DATASET = "/dcos/volume0/data/MSTAR/MSTAR_7_cropped_copy/test"
 
 NUM_CLASSES = 7
 SOFTMAX_DROPOUT_PROB = 0
 SOFTMAX_LR = 0.0001
 SOFTMAX_MOMENTUM = .9
 SOFTMAX_WEIGHT_DECAY = 0
-SOFTMAX_BATCH_SIZE = 64
-SOFTMAX_EPOCHS = 4000
+SOFTMAX_BATCH_SIZE = 20
+SOFTMAX_EPOCHS = 1000
 #SOFTMAX_EPOCHS = 100
 SOFTMAX_CHECKPOINT = ""
 

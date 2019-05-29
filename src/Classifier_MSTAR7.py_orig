@@ -17,30 +17,31 @@ class Net(nn.Module):
         super(Net, self).__init__()
 
         # First convolutional block + max pooling
-        self.conv_block1 = [nn.Conv2d(1, 32, 9, padding=2), nn.ReLU()]
-        for i in range(2):
-            self.conv_block1 = self.conv_block1 + [nn.Conv2d(32, 32, 9, padding=2), nn.ReLU()]
+        self.conv_block1 = [nn.Conv2d(1, 100, 5, padding=2), nn.ReLU()]
+        for i in range(5):
+            self.conv_block1 = self.conv_block1 + [nn.Conv2d(100, 100, 5, padding=2), nn.ReLU()]
         self.conv_block1.append(nn.MaxPool2d(4, 4))
         self.conv_block1 = nn.Sequential(*iter(self.conv_block1))
 
         # Second convolutional block + max pooling + flattening
         self.conv_block2 = nn.Sequential(
-            nn.Conv2d(32, 32, 1, padding=0),
+            nn.Conv2d(100, 100, 5, padding=2),
             nn.ReLU(),
-            nn.Conv2d(32, 16, 1, padding=0),
+            nn.Conv2d(100, 64, 5, padding=2),
             nn.ReLU(),
-            nn.MaxPool2d(4, 4),
+            nn.MaxPool2d(6, 6),
             Flatten()
         )
 
         # FC block containing dropout (to be removed for embedding)
         self.linear_block = nn.Sequential(
-            nn.Linear(16, 7),
-            #nn.Dropout(SOFTMAX_DROPOUT_PROB),
+            nn.Dropout(SOFTMAX_DROPOUT_PROB),
+            #nn.Linear(64, 77),
+            nn.Linear(256, 77),
             nn.ReLU(),
-            #nn.Dropout(SOFTMAX_DROPOUT_PROB),
-            #nn.Linear(77, NUM_CLASSES)
-            nn.Linear(7, NUM_CLASSES)
+            nn.Dropout(SOFTMAX_DROPOUT_PROB),
+            nn.Linear(77, NUM_CLASSES)
+            #nn.Linear(64, NUM_CLASSES)
         )
 
     def forward(self, x):

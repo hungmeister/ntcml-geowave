@@ -37,11 +37,10 @@ class Net(nn.Module):
         self.linear_block = nn.Sequential(
             nn.Dropout(SOFTMAX_DROPOUT_PROB),
             #nn.Linear(64, 77),
-            nn.Linear(256, 64),
+            nn.Linear(96, 77),
             nn.ReLU(),
             nn.Dropout(SOFTMAX_DROPOUT_PROB),
-            #nn.Linear(77, NUM_CLASSES)
-            nn.Linear(32, NUM_CLASSES)
+            nn.Linear(77, NUM_CLASSES)
         )
 
     def forward(self, x):

@@ -1,6 +1,6 @@
 USE_GPU = True
 IMAGE_SIZE = 24
-DATASET = "/home/zswartz/datasets/wami/100v_new_split"
+DATASET = "/dcos/volume0/data/WAMI/100v_new_split"
 
 NUM_CLASSES = 50
 SOFTMAX_DROPOUT_PROB = .5
